@@ -18,6 +18,8 @@ A short description of your product idea. It can be as rough as a few sentences:
 
 Or as detailed as a few paragraphs. The less you provide, the more questions Claude will ask. That's fine — the questions are the point.
 
+> **Web search:** The competitive research step works best with a Claude interface that has web search enabled (Claude.ai, Claude Code). If web search isn't available, do your own competitor research and include it with your product description — Claude will still run the full discovery process.
+
 ### What Claude Does
 
 1. **Reads your description** and identifies what's clear vs. what's missing
@@ -212,9 +214,9 @@ The business brief becomes the first file in `docs/1 - Discovery/business-brief.
 2. **PRODUCT.md** → feeds into **ARCHITECTURE.md** (system design), **API.md** (contracts), **CONVENTIONS.md** (code style)
 3. **Architecture decisions** → captured in **DECISIONS.md**
 4. **Complex topics** → broken out into **2 - Specs/** files
-5. **All docs together** → fed into Claude Code to generate **ROADMAP.md**
-6. **AGENTS.md** created at repo root pointing to all docs
-7. **CLAUDE.md** created with `See @AGENTS.md`
+5. **AGENTS.md** created at repo root pointing to all docs
+6. **CLAUDE.md** created with `See @AGENTS.md`
+7. **All docs together** → fed into Claude Code to generate **ROADMAP.md**
 8. **Implementation begins** following the roadmap
 
 See `02-create-project-docs.md` for the full documentation setup process.

@@ -90,6 +90,8 @@ Structure `docs/ROADMAP.md` exactly as follows:
 
 ### Header
 
+A "Phase" corresponds to a major product version (Phase 1 = v1, Phase 2 = v2, etc.). Milestones are the individual build steps within a phase. Most projects start with Phase 1.
+
 ```markdown
 # Phase {N} Build Roadmap
 

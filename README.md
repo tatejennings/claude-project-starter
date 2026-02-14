@@ -1,3 +1,5 @@
+![Claude Code Starter Guide](images/banner.jpg)
+
 # Claude Code Project Starter Kit
 
 A framework for going from a rough product idea to a fully documented, build-ready project that Claude Code can implement milestone by milestone.
@@ -7,6 +9,8 @@ A framework for going from a rough product idea to a fully documented, build-rea
 Starting a new project with Claude Code is powerful, but the quality of output depends entirely on the quality of input. Without structured documentation, you end up re-explaining context every session, getting inconsistent code, and losing track of what's been decided.
 
 This kit gives you a repeatable process for creating that documentation — from initial product idea through to a sequenced build roadmap.
+
+> **Note:** This kit is designed for non-trivial projects — apps with multiple features, data models, and real architecture decisions. If you're building a weekend hack or a small utility, you probably don't need this level of scaffolding. Just start coding.
 
 ## The Pipeline
 

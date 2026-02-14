@@ -1,0 +1,26 @@
+# .claudeignore — Copy this file to your project root as .claudeignore
+# Excludes files that add noise without value for Claude Code
+
+# Build artifacts
+node_modules/
+.next/
+dist/
+build/
+
+# iOS
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+Pods/
+.build/
+*.ipa
+*.dSYM.zip
+
+# Large assets
+*.mp4
+*.mov
+*.zip
+
+# Environment
+.env
+.env.local

@@ -416,6 +416,8 @@ Include build, test, and lint commands in CLAUDE.md so Claude Code can run them 
 
 ## Xcode 26.3+ Integration
 
+> **Note:** This section covers anticipated Xcode integration with Claude via MCP. Verify against your current Xcode version — features described here may not yet be available.
+
 With Xcode's native Claude Agent support via MCP, some practices shift:
 
 ### What Changes
