@@ -10,19 +10,13 @@ This kit gives you a repeatable process for creating that documentation — from
 
 ## The Pipeline
 
-```
- ┌─────────────────────┐     ┌──────────────────────────┐     ┌──────────────────────┐     ┌──────────────────────┐
- │  1. Discovery Guide  │ ──► │  2. Project Docs Guide    │ ──► │  3. Roadmap Guide     │ ──► │  4. Implementation    │
- │                      │     │                           │     │                       │     │     Guide             │
- │  Rough idea ──►      │     │  Business brief ──►       │     │  All docs ──►         │     │                       │
- │  Business brief      │     │  PRODUCT.md               │     │  ROADMAP.md           │     │  Milestone loop:      │
- │                      │     │  ARCHITECTURE.md          │     │  (build-order         │     │  branch → plan →      │
- │                      │     │  API.md                   │     │   milestones with     │     │  build → verify →     │
- │                      │     │  CONVENTIONS.md           │     │   dependencies)       │     │  merge → repeat       │
- │                      │     │  DECISIONS.md             │     │                       │     │                       │
- │                      │     │  AGENTS.md / CLAUDE.md    │     │                       │     │                       │
- │                      │     │  Breakout specs           │     │                       │     │                       │
- └─────────────────────┘     └──────────────────────────┘     └──────────────────────┘     └──────────────────────┘
+```mermaid
+flowchart LR
+  A["**1. Discovery Guide**<br/>Rough idea → Business brief"]
+  B["**2. Project Docs Guide**<br/>Business brief → PRODUCT.md, ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md, AGENTS.md / CLAUDE.md, Breakout specs"]
+  C["**3. Roadmap Guide**<br/>All docs → ROADMAP.md<br/>(build-order milestones with dependencies)"]
+  D["**4. Implementation Guide**<br/>Milestone loop: branch → plan → build → verify → merge → repeat"]
+  A --> B --> C --> D
 ```
 
 ## Files
