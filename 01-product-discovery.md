@@ -34,40 +34,29 @@ A `business-brief.md` file that covers: what the product is, who it's for, why i
 
 ---
 
-## Prompt Template
+## Claude's Approach
 
-Copy and paste this into Claude along with your product description:
+Claude follows this process in order. The discovery conversation is the most valuable part — don't skip straight to writing the brief.
 
----
+1. **Start by reflecting back what it understands.** Summarizes the product idea in its own words — what it does, who it's for, and what problem it solves. Calls out anything that's unclear or ambiguous. This lets you correct misunderstandings early.
 
-```
-You are acting as a senior product manager helping me define a new product. Your job is to take my rough idea and turn it into a comprehensive business brief through structured discovery.
-
-Here is my product idea:
-
-{PASTE YOUR PRODUCT DESCRIPTION HERE}
-
-Follow the process defined below. Do NOT skip straight to writing the brief. The discovery conversation is the most valuable part.
-
-## Your Approach
-
-1. **Start by reflecting back what you understand.** Summarize the product idea in your own words — what it does, who it's for, and what problem it solves. Call out anything that's unclear or ambiguous. This lets me correct misunderstandings early.
-
-2. **Research the competitive landscape.** Before asking me questions, search the web for:
+2. **Research the competitive landscape.** Before asking questions, Claude searches the web for:
    - Direct competitors (products solving the same problem)
    - Adjacent products (products solving a related problem that users might use instead)
    - Market signals (is this market growing? are people complaining about existing solutions?)
    - Pricing benchmarks (what do competitors charge?)
 
-   Present your findings as a brief competitive summary. Flag any competitors I should be especially aware of, and note gaps in the market that my product could fill.
+   Presents findings as a brief competitive summary. Flags competitors you should be aware of, and notes gaps in the market your product could fill.
 
-3. **Ask discovery questions.** Work through the 8 discovery areas below. Don't dump all questions at once — group them into 2-3 areas per round, starting with the most foundational. Wait for my answers before moving to the next round.
+3. **Ask discovery questions.** Works through the 8 discovery areas below. Groups them into 2-3 areas per round, starting with the most foundational. Waits for your answers before moving to the next round.
 
-   Adapt your questions based on what I've already told you. Skip questions I've already answered. Go deeper on areas where my answers reveal uncertainty or risk.
+   Adapts questions based on what you've already said. Skips questions you've already answered. Goes deeper on areas where your answers reveal uncertainty or risk.
 
-   **Be opinionated.** If something I describe sounds like it won't work, say so and explain why. If you see a better approach, suggest it. If I'm building something that already exists and does it well, tell me. I need a thinking partner, not a yes-machine.
+   **Claude should be opinionated.** If something sounds like it won't work, it says so and explains why. If it sees a better approach, it suggests it. If you're building something that already exists and does it well, it tells you. You need a thinking partner, not a yes-machine.
 
-4. **After discovery is complete, write the business brief.** Use the template at the bottom of this prompt. Present it for my review before finalizing.
+4. **After discovery is complete, writes the business brief.** Uses the template at the bottom of this document. Presents it for your review before finalizing.
+
+---
 
 ## Discovery Areas
 
@@ -129,12 +118,13 @@ Follow the process defined below. Do NOT skip straight to writing the brief. The
 - What would make you kill this project? (what failure signal would you act on?)
 - What would make you double down? (what success signal would trigger more investment?)
 
-## Business Brief Template
-
-After completing discovery, write the brief using this structure:
-
 ---
 
+## Business Brief Template
+
+After completing discovery, Claude writes the brief using this structure:
+
+```markdown
 # {Product Name} — Business Brief
 
 ## Executive Summary
@@ -198,10 +188,21 @@ Anything unresolved that needs more research or user feedback.
 
 ## Appendix
 Competitor screenshots, market data sources, reference links.
+```
 
 ---
 
-Remember: the discovery conversation comes first. Don't write the brief until we've worked through the questions together.
+## Prompt Template
+
+Give this entire file to Claude along with your product description:
+
+```
+Here is my product idea:
+
+{PASTE YOUR PRODUCT DESCRIPTION HERE}
+
+Follow the product discovery process defined in this document. Work through the
+discovery areas, then produce the business brief using the template provided.
 ```
 
 ---

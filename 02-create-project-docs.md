@@ -74,12 +74,15 @@ Brief description (2-3 sentences) of what the project does.
 - Build tools
 
 ## Documentation
-Pointers to when each doc should be read:
-- Before implementing a feature, read the relevant spec in `docs/2 - Specs/`
-- Follow patterns in `docs/ARCHITECTURE.md`
-- Code style rules are in `docs/CONVENTIONS.md` — always follow these
-- Check `docs/DECISIONS.md` before suggesting alternatives to existing patterns
-- Check `docs/ROADMAP.md` for build order and current milestone
+| Doc | When to Read |
+|---|---|
+| `docs/PRODUCT.md` | Before implementing any feature — contains requirements, user flows, acceptance criteria |
+| `docs/ARCHITECTURE.md` | When starting a new feature, refactoring, or needing to understand system design |
+| `docs/API.md` | When building any endpoint or client that calls one |
+| `docs/CONVENTIONS.md` | Before writing any code — code style, naming, file organization, testing rules |
+| `docs/DECISIONS.md` | Before suggesting alternatives to existing patterns — check if it's already been evaluated |
+| `docs/ROADMAP.md` | Before starting any milestone — build order, dependencies, "done when" criteria |
+| `docs/2 - Specs/*` | Before implementing the specific system that spec covers — detailed blueprints |
 
 ## Architecture Principles
 The 3-5 non-negotiable rules for this project (e.g., "database enforces access control",
@@ -313,6 +316,23 @@ Good ADRs save time. When Claude Code suggests "why not use X?", you can point t
 8. **Create CLAUDE.md** at the repo root with contents: `See @AGENTS.md`. If you use other AI tools, create their config files the same way (e.g., `.cursorrules` pointing to AGENTS.md).
 
 9. **Generate ROADMAP.md.** Use Claude Code in plan mode to read all docs and produce the milestone sequence. (See `03-generate-roadmap.md` for the full process and prompt template.)
+
+### Prompt Template
+
+Give this entire file to Claude along with your completed business brief:
+
+```
+Here is my completed business brief:
+
+{PASTE YOUR BUSINESS BRIEF HERE}
+
+Follow the documentation creation process defined in this document. Work through
+each document in the step-by-step order above — one at a time, getting my feedback
+before moving to the next. Ask me questions whenever the brief is ambiguous rather
+than guessing at requirements.
+```
+
+---
 
 ### What to Do First Session with Claude Code
 

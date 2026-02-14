@@ -205,27 +205,12 @@ Check `docs/ROADMAP.md` — see the Status section at the bottom for the current
 
 ## Prompt Template
 
-Use this prompt to generate the roadmap from an existing docs folder:
+Give this entire file to Claude Code along with access to the docs folder:
 
 ```
-Read all files in the docs/ folder: ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md,
-and everything in the specs folder. Also read PRODUCT.md.
-
-Create docs/ROADMAP.md — a build-order roadmap for Phase {N}. This file is for you to
-reference when we start building. It tells you what to build next, what it depends on,
-and what "done" looks like.
-
-Follow the structure and rules defined in 03-generate-roadmap.md exactly. Key points:
-
-1. Sequence by technical dependencies, not PRODUCT section order.
-2. Each milestone scoped to ~1-2 focused days of work.
-3. Each milestone includes: description, dependencies, doc references, definition of done.
-4. Do NOT put status indicators on individual milestones.
-5. Add a Status section at the bottom with "Completed: (none yet)" and "Up next: M0".
-6. Reference existing docs, don't duplicate them.
-7. No task-level breakdown within milestones — just the milestone definition.
-8. Include dependency graph diagram, parallelization notes, and critical path.
-9. After creating the roadmap, add a Current Focus section to AGENTS.md.
+Read all files in the docs/ folder and create docs/ROADMAP.md — a build-order
+roadmap for Phase {N}. Follow the generation process and output format defined
+in this document exactly.
 ```
 
 Adjust for project-specific needs (e.g., if the project has iOS + web workstreams, mention that mobile milestones should slot in after their server-side API dependencies).
