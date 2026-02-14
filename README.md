@@ -36,32 +36,52 @@ flowchart LR
 
 ### Step 1: Product Discovery
 
-Open a conversation with Claude. Paste the contents of `01-product-discovery.md` along with a short description of your product idea:
+Give [`01-product-discovery.md`](01-product-discovery.md) to Claude along with a short description of your product idea:
 
-> "I want to build an app that helps freelancers track time across multiple clients and generate invoices automatically."
+```
+Here is my product idea:
+
+"I want to build an app that helps freelancers track time across multiple clients
+and generate invoices automatically."
+
+Follow the product discovery process defined in this document. Work through the
+discovery areas, then produce the business brief using the template provided.
+```
 
 Claude will research the market, ask structured questions, and help you produce a `business-brief.md`.
 
 ### Step 2: Create Project Documentation
 
-Give Claude the `02-create-project-docs.md` file and your completed business brief. Work through creating each document in order:
+Give [`02-create-project-docs.md`](02-create-project-docs.md) to Claude along with your completed business brief:
 
-1. PRODUCT.md — product requirements
-2. ARCHITECTURE.md — system design
-3. API.md — endpoint contracts
-4. CONVENTIONS.md — code style rules
-5. DECISIONS.md — architecture decision records
-6. Breakout specs in `2 - Specs/` — detailed specs for complex topics
-7. AGENTS.md — agent instructions (single source of truth)
-8. CLAUDE.md — pointer to AGENTS.md
+```
+Here is my completed business brief:
+
+{PASTE YOUR BUSINESS BRIEF HERE}
+
+Follow the documentation creation process defined in this document. Work through
+each document in the step-by-step order — one at a time, getting my feedback
+before moving to the next. Ask me questions whenever the brief is ambiguous rather
+than guessing at requirements.
+```
+
+Claude will work through creating each document in order: PRODUCT.md, ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md, breakout specs, AGENTS.md, and CLAUDE.md.
 
 ### Step 3: Generate the Roadmap
 
-Give Claude Code the prompt from `03-generate-roadmap.md` (or use the template at the bottom of the file). It reads all your docs and produces `ROADMAP.md` — a sequenced list of milestones with dependencies, doc references, and "done when" criteria.
+Give [`03-generate-roadmap.md`](03-generate-roadmap.md) to Claude Code along with access to the docs folder:
+
+```
+Read all files in the docs/ folder and create docs/ROADMAP.md — a build-order
+roadmap for Phase 1. Follow the generation process and output format defined
+in this document exactly.
+```
+
+Claude Code reads all your docs and produces `ROADMAP.md` — a sequenced list of milestones with dependencies, doc references, and "done when" criteria.
 
 ### Step 4: Build
 
-For each milestone, follow the loop from `04-implement-milestones.md`:
+For each milestone, follow the loop from [`04-implement-milestones.md`](04-implement-milestones.md):
 
 ```bash
 # Branch

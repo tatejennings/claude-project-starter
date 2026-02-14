@@ -201,16 +201,3 @@ Add a `## Current Focus` section to `AGENTS.md` (or `CLAUDE.md` if no AGENTS.md 
 Check `docs/ROADMAP.md` — see the Status section at the bottom for the current milestone.
 ```
 
----
-
-## Prompt Template
-
-Give this entire file to Claude Code along with access to the docs folder:
-
-```
-Read all files in the docs/ folder and create docs/ROADMAP.md — a build-order
-roadmap for Phase {N}. Follow the generation process and output format defined
-in this document exactly.
-```
-
-Adjust for project-specific needs (e.g., if the project has iOS + web workstreams, mention that mobile milestones should slot in after their server-side API dependencies).

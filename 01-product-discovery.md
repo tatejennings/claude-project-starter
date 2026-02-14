@@ -192,21 +192,6 @@ Competitor screenshots, market data sources, reference links.
 
 ---
 
-## Prompt Template
-
-Give this entire file to Claude along with your product description:
-
-```
-Here is my product idea:
-
-{PASTE YOUR PRODUCT DESCRIPTION HERE}
-
-Follow the product discovery process defined in this document. Work through the
-discovery areas, then produce the business brief using the template provided.
-```
-
----
-
 ## After the Brief Is Complete
 
 The business brief becomes the first file in `docs/1 - Discovery/business-brief.md`. From there, the workflow is:

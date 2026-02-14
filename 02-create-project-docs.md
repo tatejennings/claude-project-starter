@@ -317,23 +317,6 @@ Good ADRs save time. When Claude Code suggests "why not use X?", you can point t
 
 9. **Generate ROADMAP.md.** Use Claude Code in plan mode to read all docs and produce the milestone sequence. (See `03-generate-roadmap.md` for the full process and prompt template.)
 
-### Prompt Template
-
-Give this entire file to Claude along with your completed business brief:
-
-```
-Here is my completed business brief:
-
-{PASTE YOUR BUSINESS BRIEF HERE}
-
-Follow the documentation creation process defined in this document. Work through
-each document in the step-by-step order above — one at a time, getting my feedback
-before moving to the next. Ask me questions whenever the brief is ambiguous rather
-than guessing at requirements.
-```
-
----
-
 ### What to Do First Session with Claude Code
 
 Once all docs exist, your first Claude Code session should be:
