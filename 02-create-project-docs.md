@@ -315,7 +315,7 @@ Good ADRs save time. When Claude Code suggests "why not use X?", you can point t
 
 8. **Create CLAUDE.md** at the repo root with contents: `See @AGENTS.md`. If you use other AI tools, create their config files the same way (e.g., `.cursorrules` pointing to AGENTS.md).
 
-9. **Generate ROADMAP.md.** Use Claude Code in plan mode to read all docs and produce the milestone sequence. (See `03-generate-roadmap.md` for the full process and prompt template.)
+**Stop here.** The roadmap is created separately using `03-generate-roadmap.md` in a new session.
 
 ### What to Do First Session with Claude Code
 
