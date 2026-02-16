@@ -299,6 +299,8 @@ Good ADRs save time. When Claude Code suggests "why not use X?", you can point t
 
 ### Step-by-Step
 
+**Not every project needs every document.** Skip any file that doesn't apply — if there's no API, skip API.md. If there are no complex subsystems, skip breakout specs. Only create what's useful. PRODUCT.md, ARCHITECTURE.md, CONVENTIONS.md, and AGENTS.md are the essential core.
+
 1. **Start with PRODUCT.md.** Define what you're building, for whom, and why. Include data models, features, flows, and acceptance criteria. This is the foundation everything else derives from.
 
 2. **Write ARCHITECTURE.md.** Translate product requirements into system design. Choose the tech stack, define the repo structure, draw the data flow, establish module boundaries. This is where PRODUCT.md's "what" becomes "how."
