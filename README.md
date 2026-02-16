@@ -16,21 +16,23 @@ This kit gives you a repeatable process for creating that documentation — from
 
 ```mermaid
 flowchart LR
-  A["**1. Discovery Guide**<br/>Rough idea → Business brief"]
-  B["**2. Project Docs Guide**<br/>Business brief → PRODUCT.md, ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md, AGENTS.md / CLAUDE.md, Breakout specs"]
-  C["**3. Roadmap Guide**<br/>All docs → ROADMAP.md<br/>(build-order milestones with dependencies)"]
-  D["**4. Implementation Guide**<br/>Milestone loop: branch → plan → build → verify → merge → repeat"]
-  A --> B --> C --> D
+  A["**1. Discovery**<br/>Rough idea → Business brief"]
+  B["**2. Product Doc**<br/>Business brief → PRODUCT.md"]
+  C["**3. Technical Docs**<br/>PRODUCT.md → ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md, AGENTS.md, Specs"]
+  D["**4. Roadmap**<br/>All docs → ROADMAP.md"]
+  E["**5. Implementation**<br/>Milestone loop: branch → plan → build → verify → merge"]
+  A --> B --> C --> D --> E
 ```
 
 ## Files
 
-| File | What It Does | When to Use It |
-|---|---|---|
-| [`01-product-discovery.md`](01-product-discovery.md) | Structured product discovery process. Give it to Claude with a rough idea — it acts as a PM, researches competitors, asks questions across 8 discovery areas, and produces a business brief. | Start of a new project, before any technical work |
-| [`02-create-project-docs.md`](02-create-project-docs.md) | Complete reference for setting up project documentation. Defines every file in the `/docs` folder, what it contains, and a step-by-step setup sequence. | After the business brief is done, before writing code |
-| [`03-generate-roadmap.md`](03-generate-roadmap.md) | Process for turning project docs into a dependency-sequenced build roadmap with milestones. Includes the prompt template for Claude Code. | After all docs are written, before starting implementation |
-| [`04-implement-milestones.md`](04-implement-milestones.md) | Practical workflow for building each milestone — git branching, Claude Code prompting patterns, verification, and merge process. | During implementation, every milestone |
+| File | What It Does | Where to Run | When to Use It |
+|---|---|---|---|
+| [`01-product-discovery.md`](01-product-discovery.md) | Structured product discovery process. Give it to Claude with a rough idea — it acts as a PM, researches competitors, asks questions across 9 discovery areas, and produces a business brief. | Claude.ai (web search) or Claude Code | Start of a new project, before any technical work |
+| [`02-create-product-doc.md`](02-create-product-doc.md) | Guide for creating PRODUCT.md — the product requirements document that defines what gets built and why. | Claude Code (needs file system) | After the business brief is done |
+| [`03-create-technical-docs.md`](03-create-technical-docs.md) | Guide for creating ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md, breakout specs, AGENTS.md, and CLAUDE.md. | Claude Code (needs file system) | After PRODUCT.md is done, before generating roadmap |
+| [`04-generate-roadmap.md`](04-generate-roadmap.md) | Process for turning project docs into a dependency-sequenced build roadmap with milestones. Give this file to Claude Code along with access to your docs folder. | Claude Code (needs file system) | After all docs are written, before starting implementation |
+| [`05-implement-milestones.md`](05-implement-milestones.md) | Practical workflow for building each milestone — git branching, Claude Code prompting patterns, verification, and merge process. | Claude Code (needs terminal + file system) | During implementation, every milestone |
 
 ## Quick Start
 
@@ -50,26 +52,37 @@ discovery areas, then produce the business brief using the template provided.
 
 Claude will research the market, ask structured questions, and help you produce a `business-brief.md`.
 
-### Step 2: Create Project Documentation
+### Step 2: Create PRODUCT.md
 
-Give [`02-create-project-docs.md`](02-create-project-docs.md) to Claude along with your completed business brief:
+Give [`02-create-product-doc.md`](02-create-product-doc.md) to Claude Code along with your completed business brief:
 
 ```
 Here is my completed business brief:
 
 {PASTE YOUR BUSINESS BRIEF HERE}
 
-Follow the documentation creation process defined in this document. Work through
-each document in the step-by-step order — one at a time, getting my feedback
-before moving to the next. Ask me questions whenever the brief is ambiguous rather
-than guessing at requirements.
+Follow the process defined in this document to create docs/PRODUCT.md. Work
+through each section, getting my feedback before moving to the next. Ask me
+questions whenever the brief is ambiguous rather than guessing at requirements.
 ```
 
-Claude will work through creating each document in order: PRODUCT.md, ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md, breakout specs, AGENTS.md, and CLAUDE.md.
+Claude Code will create a comprehensive PRODUCT.md with features, user flows, data models, and acceptance criteria. **Commit and start a fresh session for step 3.**
 
-### Step 3: Generate the Roadmap
+### Step 3: Create Technical Documentation
 
-Give [`03-generate-roadmap.md`](03-generate-roadmap.md) to Claude Code along with access to the docs folder:
+Give [`03-create-technical-docs.md`](03-create-technical-docs.md) to Claude Code in a **new session**:
+
+```
+Read docs/PRODUCT.md and docs/1 - Discovery/business-brief.md. Then follow the
+process in this document to create the technical documentation — one document at
+a time, getting my feedback before moving to the next.
+```
+
+Claude Code will create ARCHITECTURE.md, API.md, CONVENTIONS.md, DECISIONS.md, breakout specs, AGENTS.md, and CLAUDE.md.
+
+### Step 4: Generate the Roadmap
+
+Give [`04-generate-roadmap.md`](04-generate-roadmap.md) to Claude Code in a **new session**:
 
 ```
 Read all files in the docs/ folder and create docs/ROADMAP.md — a build-order
@@ -79,24 +92,24 @@ in this document exactly.
 
 Claude Code reads all your docs and produces `ROADMAP.md` — a sequenced list of milestones with dependencies, doc references, and "done when" criteria.
 
-### Step 4: Build
+### Step 5: Build
 
-For each milestone, follow the loop from [`04-implement-milestones.md`](04-implement-milestones.md):
+For each milestone, follow the loop from [`05-implement-milestones.md`](05-implement-milestones.md):
 
 ```bash
 # Branch
-git checkout -b milestone/m4-entity-crud
+git checkout -b milestone/m2-auth-profiles
 ```
 
 Start Claude Code in plan mode:
 
 ```
-We're starting milestone M4 — Entity CRUD + RLS.
+We're starting milestone M2 — Auth & User Profiles.
 
 Read these docs before planning:
-- docs/API.md — Entities section
-- docs/2 - Specs/database-schema.md — entities table, RLS policies
-- docs/PRODUCT.md — Section 3.2 (Entity model)
+- docs/ARCHITECTURE.md — Auth section
+- docs/API.md — Auth endpoints
+- docs/PRODUCT.md — Section 2.1 (User accounts)
 
 Then plan the implementation.
 ```
@@ -105,7 +118,7 @@ Review the plan, approve, build, verify against "done when" criteria, merge, and
 
 ## Output Structure
 
-After completing steps 1-3, your repo will look like:
+After completing steps 1-4, your repo will look like:
 
 ```
 project-root/
@@ -138,17 +151,21 @@ The docs structure uses AGENTS.md as the single source of truth for all AI codin
 
 One place to update, every tool stays in sync.
 
+## Right-Sizing for Your Project
+
+Not every project needs every document. Here's a rough guide:
+
+| Project Complexity | Docs to Create |
+|---|---|
+| **Minimum viable** (solo dev, single feature domain) | PRODUCT.md, ARCHITECTURE.md, CONVENTIONS.md, AGENTS.md |
+| **Standard** (multi-feature app, API-driven) | All of the above + API.md, DECISIONS.md, ROADMAP.md |
+| **Full set** (complex system, multiple services, team) | All of the above + breakout specs in `2 - Specs/` |
+
+When in doubt, start with the standard set. You can always add breakout specs later when a section of ARCHITECTURE.md or PRODUCT.md gets too detailed.
+
 ## Extending This
 
-This repo gets you started with a solid foundation. As your workflow matures, you can layer on additional tools to accelerate the process:
-
-- **Claude Code Skills** — custom reusable workflows you can invoke with slash commands (e.g., `/deploy`, `/test-rls`, `/generate-migration`)
-- **MCP Servers** — connect Claude Code to external services like databases, Slack, Google Drive, or custom APIs
-- **Hooks** — automate actions at lifecycle events (run linters after edits, format code before commits, notify on task completion)
-- **Subagents** — delegate specialized work to parallel agents (one handles frontend, another handles backend)
-- **Custom Agents** — build your own agents with specific personalities, tool access, and workflows tailored to your team's process
-
-The four files here cover the core workflow from idea to implementation. Everything above is optional enhancement on top of that.
+The five files here cover the core workflow from idea to implementation. As your workflow matures, explore Claude Code's advanced features — Skills (custom slash commands), MCP Servers (external service connections), Hooks (lifecycle automation), and Subagents (parallel task delegation). See the [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code) for details.
 
 ## License
 

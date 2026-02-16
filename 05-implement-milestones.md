@@ -56,21 +56,36 @@ git checkout -b milestone/m21-sync-endpoint
 
 Open Claude Code and start with plan mode (Shift+Tab). Your first prompt should tell Claude Code exactly what milestone you're working on and which docs to read.
 
-**Example prompt — starting a milestone:**
+**Example prompt — starting a backend milestone:**
 
 ```
-We're starting milestone M4 — Entity CRUD + RLS.
+We're starting milestone M2 — Auth & User Profiles.
 
 Read these docs before planning:
-- docs/API.md — Entities section
-- docs/2 - Specs/database-schema.md — entities table, RLS policies for entities
-- docs/PRODUCT.md — Section 3.2 (Entity model)
+- docs/ARCHITECTURE.md — Auth section
+- docs/API.md — Auth endpoints, Profile endpoints
+- docs/2 - Specs/authentication.md — full spec
+- docs/PRODUCT.md — Section 2.1 (User accounts)
 
 Then plan the implementation. List the files you'll create or modify, in what order,
 and how you'll verify each piece works.
 ```
 
-**Example prompt — starting an iOS milestone:**
+**Example prompt — starting a frontend milestone:**
+
+```
+We're starting milestone M5 — Dashboard UI.
+
+Read these docs before planning:
+- docs/PRODUCT.md — Section 4.1 (Dashboard), Section 5.3 (Dashboard Screens)
+- docs/CONVENTIONS.md — Component patterns, file organization
+- docs/API.md — Dashboard data endpoints
+
+Then plan the implementation. List the components, pages, and hooks you'll create,
+the order you'll build them, and how we'll verify each piece works.
+```
+
+**Example prompt — starting a mobile milestone:**
 
 ```
 We're starting milestone i3 — Voice Capture.
@@ -174,6 +189,8 @@ git push origin main
 # Clean up
 git branch -d milestone/m4-entity-crud
 ```
+
+> **Team projects:** Replace the direct merge above with your team's PR workflow — create a PR from the milestone branch, run CI, get code review, then merge. The rest of the milestone loop stays the same.
 
 ### 8. Update Roadmap Status
 
@@ -429,3 +446,22 @@ parsing and skip the service abstraction.
 ```
 
 It's much cheaper to fix a plan than to fix an implementation.
+
+---
+
+## Updating Documentation During Implementation
+
+Documentation is created before code, but implementation will reveal things the docs got wrong or didn't anticipate. When that happens:
+
+1. **Update the doc first, then continue building.** Don't let implementation drift from documentation — that's how you end up re-explaining context every session.
+
+2. **Keep changes scoped.** Update the specific section that's wrong, not the whole document. If an API endpoint needs an extra field, update that endpoint in API.md. Don't rewrite the entire file.
+
+3. **Record significant changes in DECISIONS.md.** If you're reversing or modifying a previous ADR (e.g., "we said we'd use JWT but switched to session tokens"), add a new ADR explaining why. Mark the old one as `Superseded by ADR-{N}`.
+
+4. **Check downstream impact.** If the change affects other milestones, review ROADMAP.md. A schema change in M4 might affect the "done when" criteria for M7. Update them now, not when you get to M7.
+
+5. **Commit doc changes separately.** Use `docs:` prefix in your commit message so doc updates are easy to find in git log:
+   ```
+   docs: update API.md — add pagination params to GET /entities
+   ```

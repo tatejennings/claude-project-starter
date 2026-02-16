@@ -201,3 +201,47 @@ Add a `## Current Focus` section to `AGENTS.md` (or `CLAUDE.md` if no AGENTS.md 
 Check `docs/ROADMAP.md` — see the Status section at the bottom for the current milestone.
 ```
 
+---
+
+## Troubleshooting
+
+### Milestones Are Too Large
+
+If a milestone looks like more than 2 focused days of work, it's too big. Ask Claude Code to split it:
+
+```
+M4 covers too much — CRUD endpoints, encryption, RLS policies, and tests.
+Split it into M4a (CRUD without encryption) and M4b (add encryption + RLS).
+Each should be completable in 1-2 days.
+```
+
+### Milestones Are Too Granular
+
+If you have 30+ milestones for a Phase 1 product, the roadmap is over-decomposed. Consolidate:
+
+```
+These milestones are too granular. Combine related work — M3 (create users table),
+M4 (add user CRUD), and M5 (add user validation) should be a single milestone
+"M3 — User Management."
+```
+
+### Dependency Graph Seems Wrong
+
+If Claude Code has a milestone depending on something that should be independent, challenge it:
+
+```
+Why does M7 (notification emails) depend on M5 (file upload)? These seem
+independent — emails don't require file upload. Remove the dependency and
+note they can run in parallel.
+```
+
+### Milestones Reference Docs That Don't Exist
+
+If a "read before starting" list points to a spec or PRODUCT.md section that wasn't created in step 2, either the doc is missing or the reference is wrong:
+
+```
+M6 references "docs/2 - Specs/payment-processing.md" but that spec doesn't
+exist. Either create it now or update M6 to reference the correct source for
+payment processing details.
+```
+

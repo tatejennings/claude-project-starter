@@ -24,7 +24,7 @@ Or as detailed as a few paragraphs. The less you provide, the more questions Cla
 
 1. **Reads your description** and identifies what's clear vs. what's missing
 2. **Researches the market** — competitors, adjacent products, market size signals
-3. **Asks structured questions** across 8 discovery areas (below)
+3. **Asks structured questions** across 9 discovery areas (below)
 4. **Challenges assumptions** — flags risks, suggests alternatives, pushes back where needed
 5. **Synthesizes everything** into a business brief document
 
@@ -48,7 +48,7 @@ Claude follows this process in order. The discovery conversation is the most val
 
    Presents findings as a brief competitive summary. Flags competitors you should be aware of, and notes gaps in the market your product could fill.
 
-3. **Ask discovery questions.** Works through the 8 discovery areas below. Groups them into 2-3 areas per round, starting with the most foundational. Waits for your answers before moving to the next round.
+3. **Ask discovery questions.** Works through the 9 discovery areas below. Groups them into 2-3 areas per round, starting with the most foundational. Waits for your answers before moving to the next round.
 
    Adapts questions based on what you've already said. Skips questions you've already answered. Goes deeper on areas where your answers reveal uncertainty or risk.
 
@@ -118,6 +118,14 @@ Claude follows this process in order. The discovery conversation is the most val
 - What would make you kill this project? (what failure signal would you act on?)
 - What would make you double down? (what success signal would trigger more investment?)
 
+### 9. Technical Context
+- What's the team's technical background? (languages, frameworks, platforms they know best)
+- Is there an existing codebase, or are we starting from scratch?
+- Any existing systems or services this needs to integrate with? (databases, APIs, auth providers)
+- Hosting or deployment preferences or constraints? (cloud provider, region, budget, self-hosted)
+- Performance requirements? (expected concurrent users, response time targets, data volume)
+- Any regulatory or compliance constraints that affect technical choices? (data residency, encryption at rest, audit logging, HIPAA, SOC 2)
+
 ---
 
 ## Business Brief Template
@@ -183,6 +191,10 @@ First 10 users, first 100 users, beta strategy, launch plan, timeline.
 | 6 months | ... | ... |
 | 12 months | ... | ... |
 
+## Technical Context
+Team background, existing systems, hosting preferences, performance requirements,
+and any regulatory constraints that will shape architecture decisions.
+
 ## Open Questions
 Anything unresolved that needs more research or user feedback.
 
@@ -205,8 +217,9 @@ The business brief becomes the first file in `docs/1 - Discovery/business-brief.
 7. **All docs together** → fed into Claude Code to generate **ROADMAP.md**
 8. **Implementation begins** following the roadmap
 
-See `02-create-project-docs.md` for the full documentation setup process.
-See `03-generate-roadmap.md` for the roadmap generation process.
+See `02-create-product-doc.md` for the next step: creating PRODUCT.md.
+See `03-create-technical-docs.md` for creating the technical documentation.
+See `04-generate-roadmap.md` for the roadmap generation process.
 
 ---
 
@@ -217,3 +230,40 @@ See `03-generate-roadmap.md` for the roadmap generation process.
 - **Push back on Claude's pushback.** If Claude challenges an assumption and you have a good reason, say so. The goal is a rigorous brief, not consensus.
 - **Keep the brief living.** Update it as you learn from beta users. The brief isn't a contract — it's a snapshot of your best thinking at this moment.
 - **Don't skip the competitor research.** Even if you think you know the market, Claude's web search often surfaces competitors or market signals you missed.
+
+---
+
+## Troubleshooting
+
+### Claude Produces a Shallow Brief
+
+The brief reads like a generic template with your product name plugged in. Push back:
+
+```
+This brief is too generic. The competitive analysis doesn't mention specific
+products or pricing. The user flows are vague. Go deeper — research actual
+competitors, name them, and describe specific user workflows step by step.
+```
+
+### Claude Agrees with Everything
+
+Claude should be a thinking partner, not a yes-machine. If it's not pushing back:
+
+```
+You're being too agreeable. Challenge my assumptions. What's the weakest part
+of this idea? What competitor am I underestimating? Where is my scope too
+ambitious for v1?
+```
+
+### Web Search Isn't Available
+
+If you're using an interface without web search, do your own competitor research first and include it with your product description. Claude will still run the full discovery process — it just won't be able to research the market independently.
+
+### Discovery Is Taking Too Long
+
+If you're past the third round of questions and the conversation feels circular, it's time to write the brief:
+
+```
+We've covered enough ground. Write the business brief now using everything
+we've discussed. Flag anything still unresolved in the Open Questions section.
+```
